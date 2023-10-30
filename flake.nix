@@ -1,9 +1,10 @@
 {
-  description = "Your new nix config";
+  description = "Derrick's Nix Config";
 
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+    #nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # You can access packages and modules from different nixpkgs revs
     # at the same time. Here's an working example:
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -11,10 +12,71 @@
 
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-23.05";
+    #home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
+    hardware.url = "github:nixos/nixos-hardware";
+
+    # modern window compositor
+    #hyprland.url = "github:hyprwm/Hyprland/v0.31.0";
+    hyprland.url = "github:hyprwm/Hyprland";
+    # community wayland nixpkgs
+    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+
+    # anyrun - a wayland launcher
+    anyrun = {
+      url = "github:Kirottu/anyrun";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # color scheme - catppuccin
+    catppuccin-btop = {
+      url = "github:catppuccin/btop";
+      flake = false;
+    };
+    catppuccin-bat = {
+      url = "github:catppuccin/bat";
+      flake = false;
+    };
+    catppuccin-alacritty = {
+      url = "github:catppuccin/alacritty";
+      flake = false;
+    };
+    catppuccin-wezterm = {
+      url = "github:catppuccin/wezterm";
+      flake = false;
+    };
+    catppuccin-helix = {
+      url = "github:catppuccin/helix";
+      flake = false;
+    };
+    catppuccin-starship = {
+      url = "github:catppuccin/starship";
+      flake = false;
+    };
+    catppuccin-hyprland = {
+      url = "github:catppuccin/hyprland";
+      flake = false;
+    };
+    catppuccin-cava = {
+      url = "github:catppuccin/cava";
+      flake = false;
+    };
+    cattppuccin-k9s = {
+      url = "github:catppuccin/k9s";
+      flake = false;
+    };
+
+    # generate iso/qcow2/dock
+
 
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!
@@ -25,8 +87,16 @@
     self,
     nixpkgs,
     home-manager,
+    hardware,
+    hyprland,
+    nixpkgs-wayland,
+    nixpkgs-unstable,
+    nixos-generators,
+    anyrun,
+    catppuccin-hyprland,
     ...
   } @ inputs: let
+    username = "derrick";
     inherit (self) outputs;
     # Supported systems for your flake packages, shell, etc.
     systems = [
@@ -36,9 +106,29 @@
       "aarch64-darwin"
       "x86_64-darwin"
     ];
+    x64_system = "x86_64-linux";
     # This is a function that generates an attribute by calling a function you
     # pass to it, with each system as an argument
     forAllSystems = nixpkgs.lib.genAttrs systems;
+    nixosSystem = import ./lib/nixosSystem.nix;
+
+    monoid_modules = {
+      nixos-modules = [
+        ./hosts/monoid.nix
+        ./nixos/configuration.nix
+      ];
+      home-module = import ./home/desktop-hyprland.nix;
+    };
+
+    x64_specialArgs = 
+      {
+        inherit username;
+        pkgs-unstable = import nixpkgs-unstable {
+          system = x64_system;
+          config.allowUnfree = true;
+        };
+      }
+      // inputs;
   in {
     # Your custom packages
     # Acessible through 'nix build', 'nix shell', etc
@@ -58,29 +148,39 @@
 
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
-    nixosConfigurations = {
-      # FIXME replace with your hostname
-      your-hostname = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        modules = [
-          # > Our main nixos configuration file <
-          ./nixos/configuration.nix
-        ];
-      };
-    };
+    nixosConfigurations = let
+      base_args = {
+        inherit home-manager nixos-generators;
+        nixpkgs = nixpkgs;
+        system = x64_system;
+        specialArgs = x64_specialArgs;
 
-    # Standalone home-manager configuration entrypoint
-    # Available through 'home-manager --flake .#your-username@your-hostname'
-    homeConfigurations = {
-      # FIXME replace with your username@hostname
-      "your-username@your-hostname" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs outputs;};
-        modules = [
-          # > Our main home-manager configuration file <
-          ./home-manager/home.nix
-        ];
       };
+    in {
+      monoid = nixosSystem (monoid_modules // base_args); 
     };
+  };
+
+  nixConfig = {
+    experimental-features = ["nix-command" "flakes"];
+
+    substituters = [
+      "https://cache.nixos.org"
+      "https://anyrun.cachix.org"
+      "https://hyprland.cachix.org"
+    ];
+
+    # nix community's cache server
+    extra-substituters = [
+      "https://nix-community.cachix.org"
+      "https://nixpkgs-wayland.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
+      "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+    ];
   };
 }
