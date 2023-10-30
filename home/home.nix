@@ -1,2 +1,4 @@
-
-import ./desktop.nix { hiDpi=true; mainDisplay="eDP-1"; }
+import ./desktop.nix {
+  hiDpi = true;
+  mainDisplay = "eDP-1";
+}

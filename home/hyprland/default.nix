@@ -1,8 +1,14 @@
-{pkgs, hyprland, catppuccin-hyprland, specialArgs, ...}: 
+{
+  pkgs,
+  hyprland,
+  catppuccin-hyprland,
+  specialArgs,
+  ...
+}:
 #let
 #  inherit (specialArgs) catppuccin-hyprland;
-#in 
-  {
+#in
+{
   imports = [
     # hyprland.homeManagerModules.default
 
@@ -47,5 +53,4 @@
     #"WLR_NO_HARDWARE_CURSORS" = "1";
     #"WLR_EGL_NO_MODIFIRES" = "1";
   };
-
 }

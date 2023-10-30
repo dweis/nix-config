@@ -30,7 +30,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-
     # anyrun - a wayland launcher
     anyrun = {
       url = "github:Kirottu/anyrun";
@@ -77,7 +76,6 @@
 
     # generate iso/qcow2/dock
 
-
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!
     # nix-colors.url = "github:misterio77/nix-colors";
@@ -120,7 +118,7 @@
       home-module = import ./home/desktop-hyprland.nix;
     };
 
-    x64_specialArgs = 
+    x64_specialArgs =
       {
         inherit username;
         pkgs-unstable = import nixpkgs-unstable {
@@ -154,10 +152,9 @@
         nixpkgs = nixpkgs;
         system = x64_system;
         specialArgs = x64_specialArgs;
-
       };
     in {
-      monoid = nixosSystem (monoid_modules // base_args); 
+      monoid = nixosSystem (monoid_modules // base_args);
     };
   };
 

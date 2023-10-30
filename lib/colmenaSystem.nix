@@ -10,9 +10,13 @@
 }: let
   username = specialArgs.username;
 in
-  { name, nodes, ... }: {
+  {
+    name,
+    nodes,
+    ...
+  }: {
     deployment = {
-      targetHost = name;  # hostName or IP address
+      targetHost = name; # hostName or IP address
       targetUser = targetUser;
       tags = host_tags;
     };
@@ -27,14 +31,19 @@ in
           environment.etc."nix/inputs/nixpkgs".source = "${nixpkgs}";
           nix.nixPath = ["/etc/nix/inputs"];
         }
-      ] ++ (if (home-module != null) then [
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
+      ]
+      ++ (
+        if (home-module != null)
+        then [
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
 
-          home-manager.extraSpecialArgs = specialArgs;
-          home-manager.users."${username}" = home-module;
-        }
-      ] else []);
+            home-manager.extraSpecialArgs = specialArgs;
+            home-manager.users."${username}" = home-module;
+          }
+        ]
+        else []
+      );
   }

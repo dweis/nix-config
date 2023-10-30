@@ -1,14 +1,13 @@
 # from https://github.com/NixOS/nixpkgs/pull/49106
-
-{ config, lib, pkgs, ... }:
-
-with lib;
-
-let
-  cfg = config.hardware.ledger-nano-s;
-
-in
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib; let
+  cfg = config.hardware.ledger-nano-s;
+in {
   options.hardware.ledger-nano-s = {
     enable = mkOption {
       type = types.bool;
@@ -29,4 +28,3 @@ in
     });
   };
 }
-

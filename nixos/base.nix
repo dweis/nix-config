@@ -1,14 +1,16 @@
-{ config, pkgs, options, ... }:
-
 {
-  imports =
-    [
-      ./develop.nix
-      ./ledger-nano-s.nix
-      ./users.nix
-      ./printscan.nix
-      ./firewall.nix
-    ];
+  config,
+  pkgs,
+  options,
+  ...
+}: {
+  imports = [
+    ./develop.nix
+    ./ledger-nano-s.nix
+    ./users.nix
+    ./printscan.nix
+    ./firewall.nix
+  ];
 
   nixpkgs.config = {
     # Allow non-free
@@ -35,10 +37,10 @@
     emacs
     file
     killall
-    nodePackages.tern        # spacemacs/js
+    nodePackages.tern # spacemacs/js
     nodePackages.js-beautify # spacemacs/js
-    nodePackages.eslint      # spacemacs/js
-    ispell                   # spacemacs
+    nodePackages.eslint # spacemacs/js
+    ispell # spacemacs
     curl
     wget
     git
@@ -64,5 +66,5 @@
   nix.gc.dates = "weekly";
   nix.gc.options = "--delete-older-than 30d";
 
-  networking.timeServers = options.networking.timeServers.default ++ [ "ca.pool.ntp.org" ];
+  networking.timeServers = options.networking.timeServers.default ++ ["ca.pool.ntp.org"];
 }

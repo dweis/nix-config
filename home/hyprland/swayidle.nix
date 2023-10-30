@@ -1,6 +1,4 @@
-{
-  pkgs, ...
-}: {
+{pkgs, ...}: {
   services.swayidle = {
     enable = true;
     systemdTarget = "graphical-session.target";
@@ -31,4 +29,3 @@
     ];
   };
 }
-

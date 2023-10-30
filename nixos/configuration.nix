@@ -1,26 +1,26 @@
 # Depends on nixos hardware channel:
 # $ sudo nix-channel --add https://github.com/NixOS/nixos-hardware/archive/master.tar.gz nixos-hardware
 # $ sudo nix-channel --update nixos-hardware
-
-{ pkgs, lib, ... }:
-
 {
+  pkgs,
+  lib,
+  ...
+}: {
   networking.hostName = "monoid";
 
   # Network Manager.
   networking.networkmanager.enable = true;
 
-  imports =
-    [ 
-      ./base.nix
-      ./audio.nix
-      ./desktop.nix
-      ./sway.nix
-      ./kubernetes.nix
-      ./yubikey.nix
-      #./steam.nix
-      ../modules/nixos/hyprland.nix
-    ];
+  imports = [
+    ./base.nix
+    ./audio.nix
+    ./desktop.nix
+    ./sway.nix
+    ./kubernetes.nix
+    ./yubikey.nix
+    #./steam.nix
+    ../modules/nixos/hyprland.nix
+  ];
 
   # Fix font sizes in X
   services.xserver.dpi = 144;
@@ -33,8 +33,7 @@
     JAVA_OPTIONS = "-Dsun.java2d.uiScale=2";
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -42,7 +41,7 @@
 
   boot.plymouth.enable = true;
 
-  console.packages = with pkgs; [ terminus_font ];
+  console.packages = with pkgs; [terminus_font];
   console.font = "ter-i32b";
 
   console.earlySetup = true;
@@ -69,8 +68,16 @@
   services.actkbd = {
     enable = true;
     bindings = [
-      { keys = [ 224 ]; events = [ "key" ]; command = "/run/current-system/sw/bin/light -U 5"; }
-      { keys = [ 225 ]; events = [ "key" ]; command = "/run/current-system/sw/bin/light -A 5"; }
+      {
+        keys = [224];
+        events = ["key"];
+        command = "/run/current-system/sw/bin/light -U 5";
+      }
+      {
+        keys = [225];
+        events = ["key"];
+        command = "/run/current-system/sw/bin/light -A 5";
+      }
     ];
   };
 

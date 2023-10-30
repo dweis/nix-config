@@ -1,9 +1,10 @@
-{ pkgs, specialArgs, ... }:
-
-let
-  wallpaper = pkgs.copyPathToStore ./wallpaper.jpg;
-in
 {
+  pkgs,
+  specialArgs,
+  ...
+}: let
+  wallpaper = pkgs.copyPathToStore ./wallpaper.jpg;
+in {
   nix.settings.trusted-users = [specialArgs.username];
 
   # needed for sway
@@ -30,19 +31,19 @@ in
     xorg.xmodmap
   ];
 
-#  services.xserver = {
-#    enable = false;
-#    layout = "us";
-#    xkbOptions = "caps:super";
-#    desktopManager = {
-#      xterm.enable = false;
-#    };
-#    libinput = {
-#      touchpad = {
-#        naturalScrolling = true;
-#      };
-#    };
-#  };
+  #  services.xserver = {
+  #    enable = false;
+  #    layout = "us";
+  #    xkbOptions = "caps:super";
+  #    desktopManager = {
+  #      xterm.enable = false;
+  #    };
+  #    libinput = {
+  #      touchpad = {
+  #        naturalScrolling = true;
+  #      };
+  #    };
+  #  };
 
   services.upower.enable = true;
   systemd.services.upower.enable = true;
@@ -64,7 +65,7 @@ in
       noto-fonts-extra
 
       source-sans
-      source-serif 
+      source-serif
       source-han-sans
       source-han-serif
 
@@ -92,24 +93,24 @@ in
   };
 
   environment.extraInit = ''
-      # GTK3 theme
-      export GTK_THEME="Numix"
-    '';
+    # GTK3 theme
+    export GTK_THEME="Numix"
+  '';
 
   environment.etc."xdg/gtk-3.0/settings.ini" = {
-      text = ''
-        [Settings]
-        gtk-icon-theme-name=Numix Square
-        gtk-theme-name=Numix
-        gtk-application-prefer-dark-theme = false
-      '';
-      mode = "444";
-    };
+    text = ''
+      [Settings]
+      gtk-icon-theme-name=Numix Square
+      gtk-theme-name=Numix
+      gtk-application-prefer-dark-theme = false
+    '';
+    mode = "444";
+  };
 
-    environment.etc."gtk-2.0/gtkrc" = {
-      text = ''
-        gtk-icon-theme-name=Numix Square
-      '';
-      mode = "444";
+  environment.etc."gtk-2.0/gtkrc" = {
+    text = ''
+      gtk-icon-theme-name=Numix Square
+    '';
+    mode = "444";
   };
 }

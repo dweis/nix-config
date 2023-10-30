@@ -1,4 +1,8 @@
-{pkgs, hyprland, ...}: {
+{
+  pkgs,
+  hyprland,
+  ...
+}: {
   ##########################################################################################################
   #
   #  NixOS's Configuration for Hyprland Window Manager
@@ -10,7 +14,7 @@
   ##########################################################################################################
 
   imports = [
-     # hyprland.nixosModules.default
+    # hyprland.nixosModules.default
   ];
 
   xdg.portal = {
@@ -50,7 +54,7 @@
         enable = true;
         #hidpi = true;
       };
-     # nvidiaPatches = true;
+      # nvidiaPatches = true;
     };
 
     # monitor backlight control
@@ -72,7 +76,7 @@
     swaylock # locking the screen
     wlogout # logout menu
     wl-clipboard # copying and pasting
-    hyprpicker  # color picker
+    hyprpicker # color picker
 
     wf-recorder # creen recording
     grim # taking screenshots
