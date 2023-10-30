@@ -43,8 +43,9 @@
 in
   with config; {
     imports = [
-      ./hyprland
       ./alacritty.nix
+      ./hyprland
+      ./kitty.nix
       ./nixvim.nix
       ./tmux.nix
     ];
