@@ -19,7 +19,7 @@
     ./kubernetes.nix
     ./yubikey.nix
     #./steam.nix
-    ../modules/nixos/hyprland.nix
+    ./hyprland.nix
   ];
 
   # Fix font sizes in X

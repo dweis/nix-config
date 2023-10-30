@@ -32,20 +32,12 @@
     ntfsprogs
     inotify-tools
     imagemagick7
-    stow # dotfile management
-    vim
-    emacs
     file
     killall
-    nodePackages.tern # spacemacs/js
-    nodePackages.js-beautify # spacemacs/js
-    nodePackages.eslint # spacemacs/js
-    ispell # spacemacs
     curl
     wget
     git
     pciutils
-    tmux
     unzip
     usbutils
     zip

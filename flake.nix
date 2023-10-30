@@ -36,41 +36,27 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # nixvim
+    nixvim = {
+      #url = "github:nix-community/nixvim";
+      url = "github:nix-community/nixvim/nixos-23.05";
+      # If you are not running an unstable channel of nixpkgs, select the corresponding branch of nixvim.
+      # url = "github:nix-community/nixvim/nixos-23.05";
+
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # color scheme - catppuccin
     catppuccin-btop = {
       url = "github:catppuccin/btop";
-      flake = false;
-    };
-    catppuccin-bat = {
-      url = "github:catppuccin/bat";
       flake = false;
     };
     catppuccin-alacritty = {
       url = "github:catppuccin/alacritty";
       flake = false;
     };
-    catppuccin-wezterm = {
-      url = "github:catppuccin/wezterm";
-      flake = false;
-    };
-    catppuccin-helix = {
-      url = "github:catppuccin/helix";
-      flake = false;
-    };
-    catppuccin-starship = {
-      url = "github:catppuccin/starship";
-      flake = false;
-    };
     catppuccin-hyprland = {
       url = "github:catppuccin/hyprland";
-      flake = false;
-    };
-    catppuccin-cava = {
-      url = "github:catppuccin/cava";
-      flake = false;
-    };
-    cattppuccin-k9s = {
-      url = "github:catppuccin/k9s";
       flake = false;
     };
 
@@ -92,6 +78,7 @@
     nixos-generators,
     anyrun,
     catppuccin-hyprland,
+    nixvim,
     ...
   } @ inputs: let
     username = "derrick";
