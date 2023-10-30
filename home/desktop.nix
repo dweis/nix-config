@@ -5,10 +5,6 @@
   nixpkgs,
   ...
 }: let
-  #flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
-  #hyprland = (import flake-compat {
-  #  src = builtins.fetchTarball "https://github.com/hyprwm/Hyprland/archive/master.tar.gz";
-  #}).defaultNix;
   config = {
     name = "Derrick Weis";
     email = "derrick@derrickweis.com";
@@ -53,12 +49,6 @@ in
       ./tmux.nix
     ];
 
-    nixpkgs = {
-      config = {
-        allowUnfree = true;
-      };
-    };
-
     home.stateVersion = "23.05"; # Please read the comment before changing.
     home.username = "derrick";
     home.homeDirectory = "/home/derrick";
@@ -87,8 +77,6 @@ in
         htop
         # Haskell
         stack
-        # Waybar
-        waybar
       ];
 
       file.".stack/config.yaml".text = ''
@@ -97,7 +85,7 @@ in
             author-name: ${name}
             author-email: ${email}
             github-username: ${githubUsername}
-            copyright: 'Copyright: (c) 2019 Derrick Weis'
+            copyright: 'Copyright: (c) 2023 Derrick Weis'
         nix:
           enable: true
           packages: [zlib]
@@ -118,6 +106,7 @@ in
       '';
 
       file.".face".source = ./face.png;
+    };
 
 
     programs = {
@@ -147,50 +136,6 @@ in
           fonts = "fc-list | cut -f2 -d: | sort -u";
           nix-search = "nix-env -qaP '*' | grep";
           nix-cleanup = "nix-collect-garbage -d && nix-store --optimize";
-        };
-      };
-    };
-
-    services.dunst = with pkgs; {
-      enable = true;
-      iconTheme = {
-        package = numix-icon-theme-square;
-        name = "Numix-Square";
-        size = "48";
-      };
-      settings = {
-        global = {
-          format = "<b>%s</b>\\n%b";
-          geometry = "600x7-20+20";
-          transparency = 20;
-          frame_width = 3;
-          frame_color = color.blue;
-          font = "${uiFont} ${toString (fontSize * 0.75)}";
-          follow = "keyboard";
-          max_icon_size = 64;
-          icon_position = "left";
-          browser = "google-chrome-stable";
-          demnu = "rofi -dmenu -p dunst:";
-        };
-        frame = {
-        };
-        urgency_low = {
-          background = color.background;
-          foreground = color.foreground;
-          frame_color = color.foreground;
-          timeout = 5;
-        };
-        urgency_normal = {
-          background = color.background;
-          foreground = color.cyan;
-          frame_color = color.cyan;
-          timeout = 5;
-        };
-        urgency_critical = {
-          background = color.background;
-          foreground = color.red;
-          frame_color = color.red;
-          timeout = 20;
         };
       };
     };
