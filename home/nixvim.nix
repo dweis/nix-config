@@ -10,6 +10,7 @@
   home.packages = with pkgs; [
     ripgrep
     fd
+    vscode-extensions.vadimcn.vscode-lldb
   ];
 
   programs.nixvim = {
@@ -19,6 +20,7 @@
 
     # neovim options
     options = {
+      termguicolors = true;
       relativenumber = false;
       number = true;
       wrap = false;
@@ -34,14 +36,8 @@
       list = true;
       listchars = "trail:.";
       completeopt = "menuone,menu,longest";
-      #wildignore = "*\\tmp\\*,*.swp,*.swo,*.zip,.git,.cabal-sandbox,output,node_modules,target";
-      #wildmode = "longest,list,full";
       cmdheight = 1;
     };
-
-    #    extraConfigVim = ''
-    #      set t_Co=256
-    #    '';
 
     # mappings
     maps = {
@@ -103,13 +99,37 @@
         };
         servers = {
           rust-analyzer.enable = true;
-          #rnix-lsp.enable = true;
           metals.enable = true;
           bashls.enable = true;
           clangd.enable = true;
           nil_ls.enable = true;
         };
       };
+
+#      dap = {
+#        enable = true;
+#        adapters = {
+#          executables = {
+#          };
+#          servers = {
+#          };
+#        };
+#        configurations = {
+#          rust = {
+#            name = "Rust debug";
+#            type = "codelldb";
+#            request = "launch";
+#            program = ''
+#              function()
+#                return vim.fn.input('Path to executable: '; vim.fn.getcwd() .. '/target/debug/'; 'file')
+#              end;
+#            '';
+#            cwd = "$\{workspaceFolder}";
+#            stopOnEntry = true;
+#            showDisassembly = "never";
+#          };
+#        };
+#      };
     };
 
     # ... and even highlights and autocommands !

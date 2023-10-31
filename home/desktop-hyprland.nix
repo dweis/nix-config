@@ -3,6 +3,7 @@
     ./alacritty.nix
     ./dotfiles.nix
     ./extra-packages.nix
+    ./gamedev.nix
     ./git.nix
     ./gtk.nix
     ./hyprland

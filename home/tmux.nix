@@ -8,5 +8,8 @@
       tmuxPlugins.vim-tmux-navigator
     ];
     terminal = "tmux-256color";
+    extraConfig = ''
+      set-option -sa terminal-overrides ",xterm-kitty:RGB"
+    '';
   };
 }
