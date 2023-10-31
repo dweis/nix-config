@@ -1,10 +1,14 @@
-{
-  pkgs,
-  nixvim,
-  ...
+{ pkgs
+, nixvim
+, ...
 }: {
   imports = [
     nixvim.homeManagerModules.nixvim
+  ];
+
+  home.packages = with pkgs; [
+    ripgrep
+    fd
   ];
 
   programs.nixvim = {
@@ -14,29 +18,29 @@
 
     # neovim options
     options = {
-      relativenumber = true;
+      relativenumber = false;
+      number = true;
+      wrap = false;
+      showmode = true;
+      smartcase = true;
+      smartindent = true;
       incsearch = true;
+      hlsearch = true;
+      softtabstop = 2;
+      shiftwidth = 2;
+      history = 1000;
+      colorcolumn = "80,100";
+      list = true;
+      listchars = "trail:.";
+      completeopt = "menuone,menu,longest";
+      #wildignore = "*\\tmp\\*,*.swp,*.swo,*.zip,.git,.cabal-sandbox,output,node_modules,target";
+      #wildmode = "longest,list,full";
+      cmdheight = 1;
     };
 
-    extraConfigVim = ''
-      set number
-      set nowrap
-      set showmode
-      set smartcase
-      set smartindent
-      set softtabstop=2
-      set shiftwidth=2
-      set history=1000
-      set colorcolumn=80,100
-      set list listchars=trail:.
-      set completeopt=menuone,menu,longest
-      set wildignore+=*\\tmp\\*,*.swp,*.swo,*.zip,.git,.cabal-sandbox,output,node_modules,bower_components
-      set wildmode=longest,list,full
-
-      set t_Co=256
-
-      set cmdheight=1
-    '';
+    #    extraConfigVim = ''
+    #      set t_Co=256
+    #    '';
 
     # mappings
     maps = {
@@ -51,13 +55,39 @@
 
     # ...plugins...
     plugins = {
-      telescope.enable = true;
-      nvim-tree.enable = true;
+      cmp-buffer.enable = true;
+      cmp-nvim-lsp.enable = true;
+      luasnip.enable = true;
       lightline.enable = true;
-      rust-tools.enable = true;
+      lsp-format.enable = true;
       nix.enable = true;
+      nvim-cmp = {
+        enable = true;
+        snippet.expand = "luasnip";
+        sources = [
+          { name = "path"; }
+          { name = "nvim_lsp"; }
+          { name = "luasnip"; }
+        ];
+        mapping = {
+          "<C-Space>" = "cmp.mapping.complete()";
+          "<CR>" = "cmp.mapping.confirm({ select= true })";
+        };
+        #mapping = {
+        #  "<C-b>" = "cmp.mapping.scroll_docs(-4)";
+        #  "<C-f>" = "cmp.mapping.scroll_docs(4)";
+        #  "<C-Space>" = "cmp.mapping.complete()";
+        #  "<C-e>" = "cmp.mapping.abort()";
+        #  "<CR>" = "cmp.mapping.confirm({ select = true })";
+        #};
+      };
+      nvim-tree.enable = true;
+      telescope.enable = true;
+      rust-tools.enable = true;
+      treesitter.enable = true;
 
       lsp = {
+        enable = true;
         keymaps = {
           silent = true;
           diagnostic = {
@@ -72,9 +102,11 @@
         };
         servers = {
           rust-analyzer.enable = true;
-          #          bashls.enable = true;
-          #          clangd.enable = true;
-          #          nil_ls.enable = true;
+          #rnix-lsp.enable = true;
+          metals.enable = true;
+          bashls.enable = true;
+          clangd.enable = true;
+          nil_ls.enable = true;
         };
       };
     };
@@ -96,7 +128,7 @@
     };
 
     extraPlugins = with pkgs.vimPlugins; [
-      #vim-nix
+      vim-nix
     ];
   };
 }

@@ -99,7 +99,7 @@
       else ''
         # holder identation
           # Point size
-          size: 11
+          size: 12
       ''
     );
 }

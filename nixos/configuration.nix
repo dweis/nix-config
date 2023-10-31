@@ -1,10 +1,9 @@
 # Depends on nixos hardware channel:
 # $ sudo nix-channel --add https://github.com/NixOS/nixos-hardware/archive/master.tar.gz nixos-hardware
 # $ sudo nix-channel --update nixos-hardware
-{
-  pkgs,
-  lib,
-  ...
+{ pkgs
+, lib
+, ...
 }: {
   networking.hostName = "monoid";
 
@@ -12,28 +11,30 @@
   networking.networkmanager.enable = true;
 
   imports = [
-    ./base.nix
     ./audio.nix
+    ./base.nix
+    ./core-desktop.nix
+    ./core-server.nix
     ./desktop.nix
-    ./sway.nix
-    ./kubernetes.nix
-    ./yubikey.nix
-    #./steam.nix
     ./hyprland.nix
+    ./kubernetes.nix
+    #./steam.nix
+    ./yubikey.nix
   ];
 
   # Fix font sizes in X
-  services.xserver.dpi = 144;
+  services.xserver.dpi = 108;
+  #144;
 
   # Fix sizes of GTK/GNOME ui elements
   environment.variables = {
-    GDK_SCALE = lib.mkDefault "2";
-    GDK_DPI_SCALE = lib.mkDefault "0.5";
-    WINIT_HIDPI_FACTOR = "2.0";
-    JAVA_OPTIONS = "-Dsun.java2d.uiScale=2";
+    GDK_SCALE = lib.mkDefault "1.5";
+    GDK_DPI_SCALE = lib.mkDefault "0.75";
+    WINIT_HIDPI_FACTOR = "1.5";
+    JAVA_OPTIONS = "-Dsun.java2d.uiScale=1.5";
   };
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -41,7 +42,7 @@
 
   boot.plymouth.enable = true;
 
-  console.packages = with pkgs; [terminus_font];
+  console.packages = with pkgs; [ terminus_font ];
   console.font = "ter-i32b";
 
   console.earlySetup = true;
@@ -56,8 +57,6 @@
     blueman
   ];
 
-  environment.variables.EDITOR = "vim";
-
   # Enable touchpad support.
   services.xserver.libinput.enable = true;
 
@@ -69,13 +68,13 @@
     enable = true;
     bindings = [
       {
-        keys = [224];
-        events = ["key"];
+        keys = [ 224 ];
+        events = [ "key" ];
         command = "/run/current-system/sw/bin/light -U 5";
       }
       {
-        keys = [225];
-        events = ["key"];
+        keys = [ 225 ];
+        events = [ "key" ];
         command = "/run/current-system/sw/bin/light -A 5";
       }
     ];

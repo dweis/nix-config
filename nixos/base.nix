@@ -25,8 +25,6 @@
 
   console.keyMap = "us";
 
-  time.timeZone = "America/Vancouver";
-
   environment.systemPackages = with pkgs; [
     ntfs3g
     ntfsprogs
@@ -53,10 +51,6 @@
   hardware.ledger-nano-s.enable = true;
 
   system.autoUpgrade.enable = false;
-
-  nix.gc.automatic = true;
-  nix.gc.dates = "weekly";
-  nix.gc.options = "--delete-older-than 30d";
 
   networking.timeServers = options.networking.timeServers.default ++ ["ca.pool.ntp.org"];
 }

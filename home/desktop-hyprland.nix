@@ -1,6 +1,16 @@
-{username, ...}: {
+{ username, ... }: {
   imports = [
-    ./desktop.nix
+    ./alacritty.nix
+    ./dotfiles.nix
+    ./extra-packages.nix
+    ./git.nix
+    ./gtk.nix
+    ./hyprland
+    ./kitty.nix
+    ./nixvim.nix
+    ./tmux.nix
+    ./xdg.nix
+    ./zsh.nix
   ];
 
   # Home Manager needs a bit of information about you and the

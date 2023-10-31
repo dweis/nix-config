@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   programs.swaylock = {
     enable = true;
     package = pkgs.swaylock-effects;
@@ -7,13 +7,13 @@
       ignore-empty-password = true;
       disable-caps-lock-text = true;
       font = "Droid Sans";
-      grace = 300;
+      grace = 0;
 
       clock = true;
       timestr = "%R";
       datestr = "%a, %e of %B";
 
-      #image = "~/.local/share/wallpapers/catppuccin/tetris.png";
+      image = "~/.config/wallpapers/lock_wallpaper";
 
       fade-in = "0.2";
 

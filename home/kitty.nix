@@ -16,7 +16,7 @@
 #   6. And Other common shortcuts such as Copy, Paste, Cursor Move, etc.
 #   7. Search in the current window(show_scrollback): `ctrl + shift + h`
 #          This will open a pager, it's defined by `scrollback_pager`, default is `less`
-#        
+#
 #
 # Useful Hot Keys for Linux:
 #   1. New Tab: `ctrl + shift + t`
@@ -40,7 +40,7 @@
       size =
         if pkgs.stdenv.isDarwin
         then 14
-        else 11;
+        else 12;
     };
 
     keybindings = {
@@ -53,7 +53,7 @@
         macos_option_as_alt = true; # Option key acts as Alt on macOS
         scrollback_lines = 10000;
         enable_audio_bell = false;
-        tab_bar_edge = "top";     # tab bar on top
+        tab_bar_edge = "top"; # tab bar on top
       }
       // (
         if pkgs.stdenv.isDarwin

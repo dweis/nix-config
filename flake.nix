@@ -82,6 +82,9 @@
     ...
   } @ inputs: let
     username = "derrick";
+    userghname = "dweis";
+    userfullname = "Derrick Weis";
+    useremail = "derrick@derrickweis.com";
     inherit (self) outputs;
     # Supported systems for your flake packages, shell, etc.
     systems = [
@@ -107,7 +110,7 @@
 
     x64_specialArgs =
       {
-        inherit username;
+        inherit username userfullname useremail userghname;
         pkgs-unstable = import nixpkgs-unstable {
           system = x64_system;
           config.allowUnfree = true;
