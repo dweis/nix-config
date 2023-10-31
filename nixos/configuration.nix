@@ -1,9 +1,10 @@
 # Depends on nixos hardware channel:
 # $ sudo nix-channel --add https://github.com/NixOS/nixos-hardware/archive/master.tar.gz nixos-hardware
 # $ sudo nix-channel --update nixos-hardware
-{ pkgs
-, lib
-, ...
+{
+  pkgs,
+  lib,
+  ...
 }: {
   networking.hostName = "monoid";
 
@@ -34,7 +35,7 @@
     JAVA_OPTIONS = "-Dsun.java2d.uiScale=1.5";
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -42,7 +43,7 @@
 
   boot.plymouth.enable = true;
 
-  console.packages = with pkgs; [ terminus_font ];
+  console.packages = with pkgs; [terminus_font];
   console.font = "ter-i32b";
 
   console.earlySetup = true;
@@ -68,13 +69,13 @@
     enable = true;
     bindings = [
       {
-        keys = [ 224 ];
-        events = [ "key" ];
+        keys = [224];
+        events = ["key"];
         command = "/run/current-system/sw/bin/light -U 5";
       }
       {
-        keys = [ 225 ];
-        events = [ "key" ];
+        keys = [225];
+        events = ["key"];
         command = "/run/current-system/sw/bin/light -A 5";
       }
     ];

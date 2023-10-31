@@ -1,6 +1,7 @@
-{ pkgs
-, nixvim
-, ...
+{
+  pkgs,
+  nixvim,
+  ...
 }: {
   imports = [
     nixvim.homeManagerModules.nixvim
@@ -65,9 +66,9 @@
         enable = true;
         snippet.expand = "luasnip";
         sources = [
-          { name = "path"; }
-          { name = "nvim_lsp"; }
-          { name = "luasnip"; }
+          {name = "path";}
+          {name = "nvim_lsp";}
+          {name = "luasnip";}
         ];
         mapping = {
           "<C-Space>" = "cmp.mapping.complete()";

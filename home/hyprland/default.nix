@@ -1,10 +1,4 @@
-{
-  pkgs,
-  hyprland,
-  catppuccin-hyprland,
-  specialArgs,
-  ...
-}:
+{catppuccin-hyprland, ...}:
 #let
 #  inherit (specialArgs) catppuccin-hyprland;
 #in
@@ -15,10 +9,7 @@
     ./anyrun.nix
     ./wayland-apps.nix
     ./swaylock.nix
-    ./swayidle.nix
   ];
-
-  # wayland.windowManager.hyprland.enable = true;
 
   # hyprland configs, based on https://github.com/notwidow/hyprland
   home.file.".config/hypr" = {

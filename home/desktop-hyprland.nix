@@ -1,4 +1,4 @@
-{ username, ... }: {
+{username, ...}: {
   imports = [
     ./alacritty.nix
     ./dotfiles.nix

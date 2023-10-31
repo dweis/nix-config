@@ -1,6 +1,7 @@
-{ pkgs
-, config
-, ...
+{
+  pkgs,
+  config,
+  ...
 }: {
   home.pointerCursor = {
     package = pkgs.bibata-cursors;
@@ -44,7 +45,7 @@
       name = "Catppuccin-Macchiato-Compact-Pink-dark";
       package = pkgs.catppuccin-gtk.override {
         # https://github.com/NixOS/nixpkgs/blob/nixos-23.05/pkgs/data/themes/catppuccin-gtk/default.nix
-        accents = [ "pink" ];
+        accents = ["pink"];
         size = "compact";
         variant = "mocha";
       };

@@ -1,12 +1,11 @@
-{ pkgs
-, specialArgs
-, ...
-}:
-let
-  wallpaper = pkgs.copyPathToStore ./wallpaper.jpg;
-in
 {
-  nix.settings.trusted-users = [ specialArgs.username ];
+  pkgs,
+  specialArgs,
+  ...
+}: let
+  wallpaper = pkgs.copyPathToStore ./wallpaper.jpg;
+in {
+  nix.settings.trusted-users = [specialArgs.username];
 
   environment.systemPackages = with pkgs; [
     libnotify
@@ -61,17 +60,17 @@ in
         ];
       })
 
-      (pkgs.callPackage ../fonts/icomoon-feather-icon-font.nix { })
+      (pkgs.callPackage ../fonts/icomoon-feather-icon-font.nix {})
     ];
 
     # user defined fonts
     # the reason there's Noto Color Emoji everywhere is to override DejaVu's
     # B&W emojis that would sometimes show instead of some Color emojis
     fontconfig.defaultFonts = {
-      serif = [ "Noto Serif" "Noto Color Emoji" ];
-      sansSerif = [ "Noto Sans" "Noto Color Emoji" ];
-      monospace = [ "JetBrainsMono Nerd Font" "Noto Color Emoji" ];
-      emoji = [ "Noto Color Emoji" ];
+      serif = ["Noto Serif" "Noto Color Emoji"];
+      sansSerif = ["Noto Sans" "Noto Color Emoji"];
+      monospace = ["JetBrainsMono Nerd Font" "Noto Color Emoji"];
+      emoji = ["Noto Color Emoji"];
     };
   };
 

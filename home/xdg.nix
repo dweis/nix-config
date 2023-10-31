@@ -64,10 +64,9 @@
         "image/webp" = ["imv.desktop"];
       };
 
-      associations.removed =
-        {
-          # ......
-        };
+      associations.removed = {
+        # ......
+      };
     };
 
     userDirs = {

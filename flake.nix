@@ -103,6 +103,7 @@
     monoid_modules = {
       nixos-modules = [
         ./hosts/monoid.nix
+        ./nixos/laptop.nix
         ./nixos/configuration.nix
       ];
       home-module = import ./home/desktop-hyprland.nix;
