@@ -15,7 +15,6 @@
     #home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
     hardware.url = "github:nixos/nixos-hardware";
 
@@ -57,6 +56,11 @@
     };
     catppuccin-hyprland = {
       url = "github:catppuccin/hyprland";
+      flake = false;
+    };
+
+    astronvim = {
+      url = "github:AstroNvim/AstroNvim/v3.37.8";
       flake = false;
     };
 
