@@ -1,6 +1,10 @@
 monoid:
 	nixos-rebuild switch --flake .#monoid
 
+vector:
+	nix build .#darwinConfigurations.vector.system
+	./result/sw/bin/darwin-rebuild switch --flake .#vector
+
 up:
 	nix flake update
 

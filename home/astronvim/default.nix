@@ -47,7 +47,6 @@
         checkmake
         gcc # c/c++ compiler, required by nvim-treesitter!
         llvmPackages.clang-unwrapped # c/c++ tools with clang-tools such as clangd
-        gdb
         lldb
 
         #-- python
@@ -92,16 +91,12 @@
         #-- javascript/typescript --#
         nodePackages.typescript
         nodePackages.typescript-language-server
-        # HTML/CSS/JSON/ESLint language servers extracted from vscode
-        nodePackages.vscode-langservers-extracted
         nodePackages."@tailwindcss/language-server"
 
         #-- CloudNative
         nodePackages.dockerfile-language-server-nodejs
         terraform
         terraform-ls
-        jsonnet
-        jsonnet-language-server
         hadolint # Dockerfile linter
 
         #-- Others
@@ -126,6 +121,13 @@
         if pkgs.stdenv.isDarwin
         then []
         else [
+          # Issues compiling on Darwin
+          jsonnet
+          jsonnet-language-server
+          # HTML/CSS/JSON/ESLint language servers extracted from vscode
+          nodePackages.vscode-langservers-extracted
+          # Linux only
+          gdb
           #-- verilog / systemverilog
           verible
         ]

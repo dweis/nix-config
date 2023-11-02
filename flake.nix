@@ -79,6 +79,7 @@
     hyprland,
     nixpkgs-wayland,
     nixpkgs-unstable,
+    nix-darwin,
     nixos-generators,
     anyrun,
     catppuccin-hyprland,
@@ -99,10 +100,12 @@
       "x86_64-darwin"
     ];
     x64_system = "x86_64-linux";
+    aarch64_darwin_system = "aarch64-darwin";
     # This is a function that generates an attribute by calling a function you
     # pass to it, with each system as an argument
     forAllSystems = nixpkgs.lib.genAttrs systems;
     nixosSystem = import ./lib/nixosSystem.nix;
+    macosSystem = import ./lib/macosSystem.nix;
 
     monoid_modules = {
       nixos-modules = [
@@ -112,7 +115,6 @@
       ];
       home-module = import ./home/desktop-hyprland.nix;
     };
-
     x64_specialArgs =
       {
         inherit username userfullname useremail userghname;
@@ -151,7 +153,31 @@
     in {
       monoid = nixosSystem (monoid_modules // base_args);
     };
+
+    darwinConfigurations = let
+      system = aarch64_darwin_system;
+      specialArgs =
+        {
+          inherit username userfullname useremail userghname;
+          pkgs-unstable = import nixpkgs-unstable {
+            inherit system;
+            config.allowUnfree = true;
+          };
+        }
+
+      // inputs;
+      base_args = {
+        inherit nix-darwin home-manager system specialArgs nixpkgs;
+      };
+      vector_modules = {
+        darwin-modules = [ hosts/vector.nix ];
+        home-module = import ./home/desktop-macos.nix;
+      };
+    in {
+      vector = macosSystem (vector_modules // base_args);
+    };
   };
+
 
   nixConfig = {
     experimental-features = ["nix-command" "flakes"];
