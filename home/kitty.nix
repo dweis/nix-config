@@ -51,9 +51,11 @@
       {
         background_opacity = "0.93";
         macos_option_as_alt = true; # Option key acts as Alt on macOS
+        macos_quit_when_last_window_closed = true;
         scrollback_lines = 10000;
         enable_audio_bell = false;
         tab_bar_edge = "top"; # tab bar on top
+        tab_bar_style= "powerline";
       }
       // (
         if pkgs.stdenv.isDarwin
