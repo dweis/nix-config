@@ -45,6 +45,8 @@
 
     keybindings = {
       "ctrl+shift+m" = "toggle_maximized";
+      "ctrl+shift+r" = "noop"; 
+      "command+r" = "noop";
     };
 
     settings =

@@ -40,6 +40,8 @@
   home = {
     packages = with pkgs;
       [
+        graphviz
+
         #-- c/c++
         cmake
         cmake-language-server
@@ -57,6 +59,7 @@
         #-- rust
         rust-analyzer
         cargo # rust package manager
+        rustc
         rustfmt
 
         #-- zig
