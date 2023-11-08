@@ -106,30 +106,30 @@
         };
       };
 
-#      dap = {
-#        enable = true;
-#        adapters = {
-#          executables = {
-#          };
-#          servers = {
-#          };
-#        };
-#        configurations = {
-#          rust = {
-#            name = "Rust debug";
-#            type = "codelldb";
-#            request = "launch";
-#            program = ''
-#              function()
-#                return vim.fn.input('Path to executable: '; vim.fn.getcwd() .. '/target/debug/'; 'file')
-#              end;
-#            '';
-#            cwd = "$\{workspaceFolder}";
-#            stopOnEntry = true;
-#            showDisassembly = "never";
-#          };
-#        };
-#      };
+      #      dap = {
+      #        enable = true;
+      #        adapters = {
+      #          executables = {
+      #          };
+      #          servers = {
+      #          };
+      #        };
+      #        configurations = {
+      #          rust = {
+      #            name = "Rust debug";
+      #            type = "codelldb";
+      #            request = "launch";
+      #            program = ''
+      #              function()
+      #                return vim.fn.input('Path to executable: '; vim.fn.getcwd() .. '/target/debug/'; 'file')
+      #              end;
+      #            '';
+      #            cwd = "$\{workspaceFolder}";
+      #            stopOnEntry = true;
+      #            showDisassembly = "never";
+      #          };
+      #        };
+      #      };
     };
 
     # ... and even highlights and autocommands !

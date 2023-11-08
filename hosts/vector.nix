@@ -1,6 +1,8 @@
-{ username, lib, ... } @ args:
-
-let
+{
+  username,
+  lib,
+  ...
+} @ args: let
   hostname = "vector";
 in {
   imports = [

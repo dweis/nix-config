@@ -1,8 +1,8 @@
-  {
-    pkgs,
-    astronvim,
-    ...
-  }:
+{
+  pkgs,
+  astronvim,
+  ...
+}:
 ###############################################################################
 #
 #  AstroNvim's configuration and all its dependencies(lsp, formatter, etc.)
@@ -119,6 +119,7 @@
         #-- Optional Requirements:
         gdu # disk usage analyzer, required by AstroNvim
         ripgrep # fast search tool, required by AstroNvim's '<leader>fw'(<leader> is space key)
+        lazygit
       ]
       ++ (
         if pkgs.stdenv.isDarwin

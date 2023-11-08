@@ -1,12 +1,18 @@
-{username, lib, ...}: {
+{
+  username,
+  lib,
+  ...
+}: {
   imports = [
     ./astronvim
+    ./cloud.nix
     ./dotfiles.nix
-    #./extra-packages.nix
+    ./extra-packages.nix
     ./git.nix
     ./kitty.nix
-     #./nixvim.nix
+    #./nixvim.nix
     ./tmux.nix
+    ./yabai.nix
     ./zsh.nix
   ];
 

@@ -45,7 +45,7 @@
 
     keybindings = {
       "ctrl+shift+m" = "toggle_maximized";
-      "ctrl+shift+r" = "noop"; 
+      "ctrl+shift+r" = "noop";
       "command+r" = "noop";
     };
 
@@ -57,7 +57,7 @@
         scrollback_lines = 10000;
         enable_audio_bell = false;
         tab_bar_edge = "top"; # tab bar on top
-        tab_bar_style= "powerline";
+        tab_bar_style = "powerline";
       }
       // (
         if pkgs.stdenv.isDarwin

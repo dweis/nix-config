@@ -2,6 +2,7 @@
   imports = [
     ./astronvim
     ./alacritty.nix
+    ./cloud.nix
     ./dotfiles.nix
     ./extra-packages.nix
     ./gamedev.nix
@@ -9,7 +10,7 @@
     ./gtk.nix
     ./hyprland
     ./kitty.nix
-     #./nixvim.nix
+    #./nixvim.nix
     ./tmux.nix
     ./xdg.nix
     ./zsh.nix

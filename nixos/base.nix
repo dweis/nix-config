@@ -26,18 +26,19 @@
   console.keyMap = "us";
 
   environment.systemPackages = with pkgs; [
-    ntfs3g
-    ntfsprogs
+    curl
     inotify-tools
     imagemagick7
     file
-    killall
-    curl
-    wget
     git
+    google-cloud-sdk
+    killall
+    ntfs3g
+    ntfsprogs
     pciutils
-    unzip
     usbutils
+    unzip
+    wget
     zip
   ];
 

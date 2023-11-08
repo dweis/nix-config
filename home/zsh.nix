@@ -24,8 +24,8 @@
       enableZshIntegration = true;
       # https://starship.rs/config/#prompt
       settings = {
-        aws = { disabled = true; };
-        gcloud = { disabled = true; };
+        aws = {disabled = true;};
+        gcloud = {disabled = true;};
         git_status = {
           ahead = "⇡($count)";
           diverged = "⇕⇡($ahead_count)⇣($behind_count)";

@@ -60,7 +60,7 @@
     };
 
     astronvim = {
-      url = "github:AstroNvim/AstroNvim/v3.37.8";
+      url = "github:AstroNvim/AstroNvim/v3.37.10";
       flake = false;
     };
 
@@ -164,20 +164,18 @@
             config.allowUnfree = true;
           };
         }
-
-      // inputs;
+        // inputs;
       base_args = {
         inherit nix-darwin home-manager system specialArgs nixpkgs;
       };
       vector_modules = {
-        darwin-modules = [ hosts/vector.nix ];
+        darwin-modules = [hosts/vector.nix];
         home-module = import ./home/desktop-macos.nix;
       };
     in {
       vector = macosSystem (vector_modules // base_args);
     };
   };
-
 
   nixConfig = {
     experimental-features = ["nix-command" "flakes"];
