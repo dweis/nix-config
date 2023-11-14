@@ -25,7 +25,7 @@
         # Browser
         firefox
         # Desktop
-        slack
+        #slack
         # Screenshots
         imv
       ]

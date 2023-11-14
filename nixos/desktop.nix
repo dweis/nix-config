@@ -9,20 +9,12 @@ in {
 
   environment.systemPackages = with pkgs; [
     libnotify
-    alacritty
     google-chrome
     glxinfo
-    #i3blocks-gaps
     networkmanagerapplet
-    numix-icon-theme
-    numix-icon-theme-square
-    numix-cursor-theme
-    numix-gtk-theme
     paprefs
     pavucontrol
-    rofi
     scrot
-    vscode
     xbindkeys
     xorg.xmodmap
   ];

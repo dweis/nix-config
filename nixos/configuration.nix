@@ -19,13 +19,11 @@
     ./desktop.nix
     ./hyprland.nix
     ./kubernetes.nix
-    #./steam.nix
     ./yubikey.nix
   ];
 
   # Fix font sizes in X
   services.xserver.dpi = 108;
-  #144;
 
   # Fix sizes of GTK/GNOME ui elements
   environment.variables = {
@@ -85,5 +83,5 @@
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
   # should.
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "23.05"; # Did you read the comment?
 }

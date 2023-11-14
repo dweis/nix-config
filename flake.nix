@@ -50,10 +50,10 @@
       url = "github:catppuccin/btop";
       flake = false;
     };
-    catppuccin-alacritty = {
-      url = "github:catppuccin/alacritty";
-      flake = false;
-    };
+    #catppuccin-alacritty = {
+    #  url = "github:catppuccin/alacritty";
+    #  flake = false;
+    #};
     catppuccin-hyprland = {
       url = "github:catppuccin/hyprland";
       flake = false;

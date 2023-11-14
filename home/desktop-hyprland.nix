@@ -1,7 +1,6 @@
 {username, ...}: {
   imports = [
     ./astronvim
-    ./alacritty.nix
     ./cloud.nix
     ./dotfiles.nix
     ./extra-packages.nix

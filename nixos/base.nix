@@ -31,7 +31,7 @@
     imagemagick7
     file
     git
-    google-cloud-sdk
+    #google-cloud-sdk
     killall
     ntfs3g
     ntfsprogs
