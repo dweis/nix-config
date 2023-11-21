@@ -35,6 +35,7 @@ return {
       "ruff_lsp",      -- extremely fast Python linter and code transformation
       "jdtls",         -- java
       "nil_ls",        -- nix language server
+      "hls",           -- haskell
       ---- Operation & Cloud Nativautoindente
       "bashls",        -- bash
       "cmake",         -- cmake language server

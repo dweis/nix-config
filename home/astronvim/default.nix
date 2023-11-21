@@ -96,6 +96,10 @@
         nodePackages.typescript-language-server
         nodePackages."@tailwindcss/language-server"
 
+        #-- scala --#
+        coursier
+        metals
+
         #-- CloudNative
         nodePackages.dockerfile-language-server-nodejs
         terraform
