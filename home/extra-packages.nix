@@ -8,6 +8,7 @@
       material-icons
       powerline-fonts
       dejavu_fonts
+      jq
       # System utils
       fzf
       htop
