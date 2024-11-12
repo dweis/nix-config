@@ -7,6 +7,7 @@
     erlang
     jsonnet
     nodejs-18_x
+    bun
     python3
     python3Packages.pip
     python3Packages.setuptools
