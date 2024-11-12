@@ -14,6 +14,7 @@
     sbt
     scala
     rustup
+    gcc
   ];
 
   programs.java = with pkgs; {

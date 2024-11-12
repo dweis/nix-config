@@ -9,6 +9,19 @@
   #
   ###################################################################################
 
+  imports = [
+    ./users.nix
+  ];
+
+
+  # add user's shell into /etc/shells
+  environment.shells = with pkgs; [
+    bash
+    zsh
+  ];
+
+  # set user's default shell system-wide
+  users.defaultUserShell = pkgs.zsh;
   # for nix server, we do not need to keep too much generations
   boot.loader.systemd-boot.configurationLimit = lib.mkDefault 10;
   # boot.loader.grub.configurationLimit = 10;
@@ -63,15 +76,19 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     curl
     git # used by nix flakes
     git-lfs # used by huggingface models
   ];
 
-  # replace default editor with neovim
-  environment.variables.EDITOR = "nvim";
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
+  };
+
 
   virtualisation.docker = {
     enable = true;

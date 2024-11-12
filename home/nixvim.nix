@@ -17,6 +17,7 @@
     enable = true;
     vimAlias = true;
     viAlias = true;
+    plugins.lualine.enable = true;
 
     # neovim options
     options = {
@@ -40,15 +41,15 @@
     };
 
     # mappings
-    maps = {
-      normal = {
-        "<Leader>t" = ":Telescope find_files<CR>";
-      };
-      visual = {
-        ">" = ">gv";
-        "<" = "<gv";
-      };
-    };
+#    maps = {
+#      normal = {
+#        "<Leader>t" = ":Telescope find_files<CR>";
+#      };
+#      visual = {
+#        ">" = ">gv";
+#        "<" = "<gv";
+#      };
+#    };
 
     # ...plugins...
     plugins = {
@@ -60,12 +61,12 @@
       nix.enable = true;
       nvim-cmp = {
         enable = true;
-        snippet.expand = "luasnip";
-        sources = [
-          {name = "path";}
-          {name = "nvim_lsp";}
-          {name = "luasnip";}
-        ];
+        #snippet.expand = "luasnip";
+        #sources = [
+        #  {name = "path";}
+        #  {name = "nvim_lsp";}
+        #  {name = "luasnip";}
+        #];
         mapping = {
           "<C-Space>" = "cmp.mapping.complete()";
           "<CR>" = "cmp.mapping.confirm({ select= true })";

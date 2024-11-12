@@ -6,9 +6,6 @@
 }: {
   imports = [
     ./develop.nix
-    ./ledger-nano-s.nix
-    ./users.nix
-    ./printscan.nix
     ./firewall.nix
   ];
 
@@ -48,8 +45,6 @@
   };
 
   services.openssh.enable = true;
-
-  hardware.ledger-nano-s.enable = true;
 
   system.autoUpgrade.enable = false;
 

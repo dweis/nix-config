@@ -12,7 +12,7 @@
   environment.systemPackages = with pkgs; [
     # ---- Kubernetes / Docker
     docker
-    docker-machine
+    #docker-machine
     #minikube
     #kubectl
     #kubernetes-helm

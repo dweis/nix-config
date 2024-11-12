@@ -3,7 +3,7 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     #nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # You can access packages and modules from different nixpkgs revs
     # at the same time. Here's an working example:
@@ -11,7 +11,7 @@
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-23.05";
+    home-manager.url = "github:nix-community/home-manager/release-24.05";
     #home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -38,7 +38,7 @@
     # nixvim
     nixvim = {
       #url = "github:nix-community/nixvim";
-      url = "github:nix-community/nixvim/nixos-23.05";
+      url = "github:nix-community/nixvim/nixos-24.05";
       # If you are not running an unstable channel of nixpkgs, select the corresponding branch of nixvim.
       # url = "github:nix-community/nixvim/nixos-23.05";
 
@@ -111,9 +111,16 @@
       nixos-modules = [
         ./hosts/monoid.nix
         ./nixos/laptop.nix
-        ./nixos/configuration.nix
+        ./nixos/monoid.nix
       ];
       home-module = import ./home/desktop-hyprland.nix;
+    };
+    lambda_modules = {
+      nixos-modules = [
+        ./hosts/lambda.nix
+        ./nixos/lambda.nix
+      ];
+      home-module = import ./home/server.nix;
     };
     x64_specialArgs =
       {
@@ -152,6 +159,7 @@
       };
     in {
       monoid = nixosSystem (monoid_modules // base_args);
+      lambda = nixosSystem (lambda_modules // base_args);
     };
 
     darwinConfigurations = let

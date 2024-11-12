@@ -13,6 +13,9 @@
 
   imports = [
     ./core-server.nix
+    ./ledger-nano-s.nix
+    ./users.nix
+    ./printscan.nix
   ];
 
   # to install chrome, you need to enable unfree packages
@@ -177,4 +180,6 @@
     # fix https://github.com/NixOS/nixpkgs/issues/238025
     TZ = "${config.time.timeZone}";
   };
+
+  hardware.ledger-nano-s.enable = true;
 }
