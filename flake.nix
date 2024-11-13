@@ -36,39 +36,18 @@
     };
 
     # nixvim
-    nixvim = {
-      #url = "github:nix-community/nixvim";
-      url = "github:nix-community/nixvim/nixos-24.05";
-      # If you are not running an unstable channel of nixpkgs, select the corresponding branch of nixvim.
-      # url = "github:nix-community/nixvim/nixos-23.05";
-
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixvim-flake.url = "github:dweis/nixvim";
 
     # color scheme - catppuccin
     catppuccin-btop = {
       url = "github:catppuccin/btop";
       flake = false;
     };
-    #catppuccin-alacritty = {
-    #  url = "github:catppuccin/alacritty";
-    #  flake = false;
-    #};
+
     catppuccin-hyprland = {
       url = "github:catppuccin/hyprland";
       flake = false;
     };
-
-    astronvim = {
-      url = "github:AstroNvim/AstroNvim/v3.37.12";
-      flake = false;
-    };
-
-    # generate iso/qcow2/dock
-
-    # Shameless plug: looking for a way to nixify your themes and make
-    # everything match nicely? Try nix-colors!
-    # nix-colors.url = "github:misterio77/nix-colors";
   };
 
   outputs = {
@@ -83,7 +62,7 @@
     nixos-generators,
     anyrun,
     catppuccin-hyprland,
-    nixvim,
+    nixvim-flake,
     ...
   } @ inputs: let
     username = "derrick";

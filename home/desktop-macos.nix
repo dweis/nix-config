@@ -4,7 +4,6 @@
   ...
 }: {
   imports = [
-#    ./astronvim
     ./cloud.nix
     ./dotfiles.nix
     ./extra-packages.nix
