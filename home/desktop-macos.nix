@@ -8,10 +8,8 @@
     ./dotfiles.nix
     ./extra-packages.nix
     ./git.nix
-    ./kitty.nix
     ./nixvim.nix
     ./tmux.nix
-    ./yabai.nix
     ./zsh.nix
   ];
 

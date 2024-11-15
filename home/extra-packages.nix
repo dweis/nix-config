@@ -8,6 +8,15 @@
       material-icons
       powerline-fonts
       dejavu_fonts
+      (nerdfonts.override {
+        fonts = [
+          "FiraCode"
+          "JetBrainsMono"
+          "Iosevka"
+          "Monoid"
+          "ZedMono"
+        ];
+      })
       jq
       # System utils
       fzf

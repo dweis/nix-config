@@ -49,6 +49,7 @@ in {
           "FiraCode"
           "JetBrainsMono"
           "Iosevka"
+          "Monoid"
         ];
       })
 

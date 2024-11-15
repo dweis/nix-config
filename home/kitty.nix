@@ -1,6 +1,6 @@
 {
-  lib,
   pkgs,
+  pkgs-unstable,
   ...
 }:
 ###########################################################
@@ -30,17 +30,21 @@
 {
   programs.kitty = {
     enable = true;
+    package = pkgs-unstable.kitty;
     # kitty has catppuccin theme built-in,
     # all the built-in themes are packaged into an extra package named `kitty-themes`
     # and it's installed by home-manager if `theme` is specified.
-    theme = "Catppuccin-Mocha";
+    theme = "Catppuccin-Macchiato";
     font = {
-      name = "JetBrainsMono Nerd Font";
+      #name = "JetBrainsMono Nerd Font";
+      #name = "Monaspace Neon";
+      #name = "Iosevka Nerd Font Mono";
+      name = "0xProto Nerd Font Mono";
       # use different font size on macOS
       size =
         if pkgs.stdenv.isDarwin
-        then 14
-        else 12;
+        then 18
+        else 14;
     };
 
     keybindings = {
@@ -58,6 +62,7 @@
         enable_audio_bell = false;
         tab_bar_edge = "top"; # tab bar on top
         tab_bar_style = "powerline";
+        disable_ligatures = "cursor";
       }
       // (
         if pkgs.stdenv.isDarwin
