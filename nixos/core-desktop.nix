@@ -13,7 +13,7 @@
 
   imports = [
     ./core-server.nix
-    ./ledger-nano-s.nix
+    ./devices/ledger-nano-s.nix
     ./users.nix
     ./printscan.nix
   ];
