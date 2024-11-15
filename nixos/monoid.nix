@@ -27,10 +27,10 @@
 
   # Fix sizes of GTK/GNOME ui elements
   environment.variables = {
-    GDK_SCALE = lib.mkDefault "1.5";
-    GDK_DPI_SCALE = lib.mkDefault "0.75";
-    WINIT_HIDPI_FACTOR = "1.5";
-    JAVA_OPTIONS = "-Dsun.java2d.uiScale=1.5";
+    GDK_SCALE = lib.mkDefault "1.6";
+    GDK_DPI_SCALE = lib.mkDefault "0.8";
+    WINIT_HIDPI_FACTOR = "1.6";
+    JAVA_OPTIONS = "-Dsun.java2d.uiScale=1.6";
   };
 
   nix.settings.experimental-features = ["nix-command" "flakes"];

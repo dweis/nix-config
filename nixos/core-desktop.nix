@@ -46,16 +46,17 @@
   };
 
   # A key remapping daemon for linux.
+  # FIXME for 24.05
   # https://github.com/rvaiya/keyd
-  services.keyd = {
-    enable = true;
-    settings = {
-      main = {
-        # overloads the capslock key to function as both escape (when tapped) and control (when held)
-        capslock = "overload(control, esc)";
-      };
-    };
-  };
+  # services.keyd = {
+  #   enable = true;
+  #   settings = {
+  #     main = {
+  #       # overloads the capslock key to function as both escape (when tapped) and control (when held)
+  #       capslock = "overload(control, esc)";
+  #     };
+  #   };
+  # };
 
   # PipeWire is a new low-level multimedia framework.
   # It aims to offer capture and playback for both audio and video with minimal latency.

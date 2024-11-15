@@ -95,6 +95,8 @@
     networkmanagerapplet # provide GUI app: nm-connection-editor
 
     xfce.thunar # xfce4's file manager
+
+    bemenu
   ];
 
   # fix https://github.com/ryan4yin/nix-config/issues/10

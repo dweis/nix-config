@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-if [[ ! $(pidof anyrun) ]]; then
-  anyrun
+if [[ ! $(pidof bemenu-run) ]]; then
+  bemenu-run
 else
-  pkill anyrun
+  pkill bemenu-run
 fi
