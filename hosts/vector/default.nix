@@ -1,4 +1,5 @@
 {
+  pkgs,
   username,
   lib,
   ...
@@ -6,8 +7,9 @@
   hostname = "vector";
 in {
   imports = [
-    ../modules/darwin
+    ../../darwin
   ];
+
 
   networking.hostName = hostname;
   networking.computerName = hostname;
@@ -19,4 +21,5 @@ in {
   };
 
   nix.settings.trusted-users = [username];
+
 }
