@@ -81,16 +81,13 @@
 
     monoid_modules = {
       nixos-modules = [
-        ./hosts/monoid.nix
-        ./nixos/laptop.nix
-        ./nixos/monoid.nix
+        ./hosts/monoid
       ];
       home-module = import ./home/desktop-hyprland.nix;
     };
     lambda_modules = {
       nixos-modules = [
-        ./hosts/lambda.nix
-        ./nixos/lambda.nix
+        ./hosts/lambda
       ];
       home-module = import ./home/server.nix;
     };
@@ -113,12 +110,6 @@
 
     # Your custom packages and modifications, exported as overlays
     overlays = import ./overlays {inherit inputs;};
-    # Reusable nixos modules you might want to export
-    # These are usually stuff you would upstream into nixpkgs
-    nixosModules = import ./modules/nixos;
-    # Reusable home-manager modules you might want to export
-    # These are usually stuff you would upstream into home-manager
-    homeManagerModules = import ./modules/home-manager;
 
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
@@ -149,7 +140,7 @@
         inherit nix-darwin home-manager system specialArgs nixpkgs;
       };
       vector_modules = {
-        darwin-modules = [hosts/vector.nix];
+        darwin-modules = [hosts/vector];
         home-module = import ./home/desktop-macos.nix;
       };
     in {

@@ -12,14 +12,15 @@
   networking.networkmanager.enable = true;
 
   imports = [
-    ./audio.nix
-    ./base.nix
-    ./core-desktop.nix
-    ./core-server.nix
-    ./desktop.nix
-    ./hyprland.nix
-    ./kubernetes.nix
-    ./yubikey.nix
+    ./hardware-configuration.nix
+    ../../nixos/base.nix
+    ../../nixos/laptop.nix
+    ../../nixos/core-desktop.nix
+    ../../nixos/core-server.nix
+    ../../nixos/desktop.nix
+    ../../nixos/hyprland.nix
+    ../../nixos/kubernetes.nix
+    ../../nixos/devices
   ];
 
   # Fix font sizes in X

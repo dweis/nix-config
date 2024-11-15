@@ -1,18 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
-  ###################################################################################
-  #
-  #  Core configuration for nix-darwin
-  #
-  #  All the configuration options are documented here:
-  #    https://daiderd.com/nix-darwin/manual/index.html#sec-options
-  #
-  ###################################################################################
-
-  # enable flakes globally
+{ pkgs, lib, ... }: {
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Allow unfree packages
@@ -36,4 +22,6 @@
   };
 
   nix.optimise.automatic = true;
+
+  system.stateVersion = 5;
 }

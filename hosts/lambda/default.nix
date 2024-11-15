@@ -5,6 +5,14 @@
   pkgs,
   ...
 }: {
+  imports = [
+    ./hardware-configuration.nix
+    ../../nixos/base.nix
+    ../../nixos/develop.nix
+    ../../nixos/core-server.nix
+    ../../nixos/kubernetes.nix
+  ];
+
   networking.hostName = "lambda";
 
   # Bootloader.
@@ -13,13 +21,6 @@
 
   # Network Manager.
   networking.networkmanager.enable = true;
-
-  imports = [
-    ./base.nix
-    ./develop.nix
-    ./core-server.nix
-    ./kubernetes.nix
-  ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
