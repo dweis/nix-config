@@ -13,7 +13,6 @@
 
   imports = [
     ./hardware-configuration.nix
-    ../../nixos/base.nix
     ../../nixos/laptop
     ../../nixos/desktop
     ../../nixos/kubernetes.nix

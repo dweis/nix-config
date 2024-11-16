@@ -7,9 +7,8 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    ../../nixos/base.nix
+    ../../nixos/core
     ../../nixos/develop.nix
-    ../../nixos/core-server.nix
     ../../nixos/kubernetes.nix
   ];
 

@@ -1,14 +1,9 @@
 {
   lib,
   pkgs,
+  options,
   ...
 }: {
-  ###################################################################################
-  #
-  #  NixOS's core configuration suitable for all my machines
-  #
-  ###################################################################################
-
   imports = [
     ./users.nix
   ];
@@ -41,8 +36,6 @@
     experimental-features = ["nix-command" "flakes"];
   };
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = lib.mkDefault false;
 
   # Set your time zone.
   time.timeZone = "America/Vancouver";
@@ -73,14 +66,6 @@
     upower.enable = true;
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    wget
-    curl
-    git # used by nix flakes
-    git-lfs # used by huggingface models
-  ];
 
   programs.neovim = {
     enable = true;
@@ -94,4 +79,42 @@
     # This is required for containers which are created with the `--restart=always` flag to work.
     enableOnBoot = true;
   };
+
+  nixpkgs.config = {
+    # Allow non-free
+    allowUnfree = true;
+  };
+
+  # Use the systemd-boot EFI boot loader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
+  console.keyMap = "us";
+
+  environment.systemPackages = with pkgs; [
+    curl
+    inotify-tools
+    imagemagick7
+    file
+    git
+    git-lfs
+    #google-cloud-sdk
+    killall
+    ntfs3g
+    ntfsprogs
+    pciutils
+    usbutils
+    unzip
+    wget
+    zip
+  ];
+
+  programs = {
+    zsh.enable = true;
+    ssh.startAgent = true;
+  };
+
+  system.autoUpgrade.enable = false;
+
+  networking.timeServers = ["ca.pool.ntp.org"];
 }
