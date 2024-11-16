@@ -12,9 +12,7 @@
   ###################################################################################
 
   imports = [
-    ./core-server.nix
-    ./devices/ledger-nano-s.nix
-    ./users.nix
+    ../core
     ./printscan.nix
   ];
 
@@ -163,7 +161,7 @@
         ];
       })
 
-      (pkgs.callPackage ../fonts/icomoon-feather-icon-font.nix {})
+      (pkgs.callPackage ../../fonts/icomoon-feather-icon-font.nix {})
     ];
 
     # user defined fonts

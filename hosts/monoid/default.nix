@@ -14,11 +14,8 @@
   imports = [
     ./hardware-configuration.nix
     ../../nixos/base.nix
-    ../../nixos/laptop.nix
-    ../../nixos/core-desktop.nix
-    ../../nixos/core-server.nix
-    ../../nixos/desktop.nix
-    ../../nixos/hyprland.nix
+    ../../nixos/laptop
+    ../../nixos/desktop
     ../../nixos/kubernetes.nix
     ../../nixos/devices
   ];

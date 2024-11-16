@@ -5,6 +5,11 @@
 }: let
   wallpaper = pkgs.copyPathToStore ./wallpaper.jpg;
 in {
+  imports = [
+    ./core.nix
+    ./hyprland.nix
+  ];
+
   nix.settings.trusted-users = [specialArgs.username];
 
   environment.systemPackages = with pkgs; [
@@ -53,7 +58,7 @@ in {
         ];
       })
 
-      (pkgs.callPackage ../fonts/icomoon-feather-icon-font.nix {})
+      (pkgs.callPackage ../../fonts/icomoon-feather-icon-font.nix {})
     ];
 
     # user defined fonts
