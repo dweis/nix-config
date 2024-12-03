@@ -106,7 +106,7 @@
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = let
       base_args = {
-        inherit home-manager nixos-generators;
+        inherit home-manager nixos-generators catppuccin;
         nixpkgs = nixpkgs;
         system = x64_system;
         specialArgs = x64_specialArgs;

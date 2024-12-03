@@ -1,5 +1,6 @@
 {username, ...}: {
   imports = [
+    ./catppuccin.nix
     ./cloud.nix
     ./dotfiles.nix
     ./extra-packages.nix

@@ -2,6 +2,7 @@
   nixpkgs,
   home-manager,
   nixos-generators,
+  catppuccin,
   system,
   specialArgs,
   nixos-modules,
@@ -14,6 +15,8 @@ in
     modules =
       nixos-modules
       ++ [
+        catppuccin.nixosModules.catppuccin
+
         {
           # make `nix run nixpkgs#nixpkgs` use the same nixpkgs as the one used by this flake.
           nix.registry.nixpkgs.flake = nixpkgs;
