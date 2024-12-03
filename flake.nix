@@ -11,7 +11,7 @@
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-24.05";
+    home-manager.url = "github:nix-community/home-manager";
     #home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -32,16 +32,7 @@
     # nixvim
     nixvim-flake.url = "github:dweis/nixvim";
 
-    # color scheme - catppuccin
-    catppuccin-btop = {
-      url = "github:catppuccin/btop";
-      flake = false;
-    };
-
-    catppuccin-hyprland = {
-      url = "github:catppuccin/hyprland";
-      flake = false;
-    };
+    catppuccin.url = "github:catppuccin/nix";
   };
 
   outputs = {
@@ -54,7 +45,7 @@
     nixpkgs-unstable,
     nix-darwin,
     nixos-generators,
-    catppuccin-hyprland,
+    catppuccin,
     nixvim-flake,
     ...
   } @ inputs: let
@@ -140,7 +131,9 @@
         inherit nix-darwin home-manager system specialArgs nixpkgs;
       };
       vector_modules = {
-        darwin-modules = [hosts/vector];
+        darwin-modules = [
+            hosts/vector
+          ];
         home-module = import ./home/desktop-macos.nix;
       };
     in {

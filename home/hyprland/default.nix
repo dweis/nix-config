@@ -1,7 +1,3 @@
-{catppuccin-hyprland, ...}:
-#let
-#  inherit (specialArgs) catppuccin-hyprland;
-#in
 {
   imports = [
     # hyprland.homeManagerModules.default
@@ -14,10 +10,6 @@
   home.file.".config/hypr" = {
     source = ./hypr-conf;
     # copy the scripts directory recursively
-    recursive = true;
-  };
-  home.file.".config/hypr/themes" = {
-    source = "${catppuccin-hyprland}/themes";
     recursive = true;
   };
 
