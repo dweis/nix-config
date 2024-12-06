@@ -4,7 +4,7 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-    #nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    ixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # You can access packages and modules from different nixpkgs revs
     # at the same time. Here's an working example:
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -82,6 +82,12 @@
       ];
       home-module = import ./home/server.nix;
     };
+    semigroup_modules = {
+      nixos-modules = [
+        ./hosts/semigroup
+      ];
+      home-module = import ./home/desktop-hyprland.nix;
+    };
     x64_specialArgs =
       {
         inherit username userfullname useremail userghname;
@@ -114,6 +120,7 @@
     in {
       monoid = nixosSystem (monoid_modules // base_args);
       lambda = nixosSystem (lambda_modules // base_args);
+      semigroup = nixosSystem (semigroup_modules // base_args);
     };
 
     darwinConfigurations = let

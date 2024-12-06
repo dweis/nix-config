@@ -179,6 +179,4 @@
     # fix https://github.com/NixOS/nixpkgs/issues/238025
     TZ = "${config.time.timeZone}";
   };
-
-  hardware.ledger-nano-s.enable = true;
 }
