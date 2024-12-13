@@ -11,6 +11,7 @@
     ../../nixos/develop.nix
     ../../nixos/kubernetes.nix
     ../../nixos/desktop
+    ../../nixos/vm/spice.nix
   ];
 
   networking.hostName = "lambda";
