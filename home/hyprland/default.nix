@@ -35,4 +35,6 @@
     #"WLR_NO_HARDWARE_CURSORS" = "1";
     #"WLR_EGL_NO_MODIFIRES" = "1";
   };
+
+  programs.rofi.enable = true;
 }

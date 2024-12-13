@@ -96,7 +96,8 @@
 
     xfce.thunar # xfce4's file manager
 
-    bemenu
+    #bemenu
+    #rofi
   ];
 
   # fix https://github.com/ryan4yin/nix-config/issues/10
