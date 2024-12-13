@@ -14,7 +14,7 @@
     ../../nixos/vm/spice.nix
   ];
 
-  networking.hostName = "lambda";
+  networking.hostName = "semigroup";
 
   # Bootloader.
   boot.loader.grub.enable = true;
