@@ -12,6 +12,7 @@
     ./git.nix
     ./nixvim.nix
     ./tmux.nix
+    ./virt-viewer.nix
     ./zsh.nix
   ];
 
