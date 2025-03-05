@@ -49,14 +49,10 @@ in {
       source-han-serif
 
       # nerdfonts
-      (nerdfonts.override {
-        fonts = [
-          "FiraCode"
-          "JetBrainsMono"
-          "Iosevka"
-          "Monoid"
-        ];
-      })
+      nerd-fonts.FiraCode
+      nerd-fonts.JetBrainsMono
+      nerd-fonts.Iosevka
+      nerd-fonts.Monoid
 
       (pkgs.callPackage ../../fonts/icomoon-feather-icon-font.nix {})
     ];

@@ -153,13 +153,9 @@
       source-han-sans
       source-han-serif
 
-      (nerdfonts.override {
-        fonts = [
-          "FiraCode"
-          "JetBrainsMono"
-          "Iosevka"
-        ];
-      })
+      nerd-fonts.FiraCode
+      nerd-fonts.JetBrainsMono
+      nerd-fonts.Iosevka
 
       (pkgs.callPackage ../../fonts/icomoon-feather-icon-font.nix {})
     ];
