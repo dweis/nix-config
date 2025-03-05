@@ -90,7 +90,7 @@
   environment.systemPackages = with pkgs; [
     curl
     inotify-tools
-    imagemagick7
+    imagemagick
     file
     git
     git-lfs
